@@ -9,7 +9,7 @@ import { io } from 'socket.io-client';
 export class AppComponent implements OnInit {
   @ViewChild('localVideo') localVideo!: ElementRef;
   @ViewChild('remoteVideo') remoteVideo!: ElementRef;
-  socket = io('http://localhost:5000');
+  socket = io('https://backend-sd0b.onrender.com/');
   localStream!: MediaStream;
   peerConnection!: RTCPeerConnection;
   
