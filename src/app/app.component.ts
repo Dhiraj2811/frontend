@@ -21,7 +21,13 @@ export class AppComponent implements OnInit {
     this.localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
     this.localVideo.nativeElement.srcObject = this.localStream;
 
-    this.peerConnection = new RTCPeerConnection();
+    this.peerConnection = new RTCPeerConnection({
+      iceServers:[
+        {
+          urls:"stun:stun.l.google.com:19302"
+        }
+      ]
+    });
     this.localStream.getTracks().forEach(track => this.peerConnection.addTrack(track, this.localStream));
 
     this.peerConnection.onicecandidate = (event) => {
